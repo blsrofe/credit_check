@@ -1,20 +1,17 @@
 
 #create method to add digits together for third line
 def sum_digits(num)
-  num.to_s.split("").inject(0) {|sum, n| sum + n.to_i}
+  num.to_s.split("").inject(0) do|sum, n| {sum + n.to_i}
 end
 
 #get credit card number
 puts "What is the card number?"
 card_number = gets.chomp
 #put card number into array
-split_card_number = card_number.split(//)
-#put array into a hash with indexes
-indexes = Hash[split_card_number.map.with_index.to_a]
-#problem in hash, does not work when digits are the same in number
-#create bland second line array and fill with doubled numbers
+first_line = card_number.split(//)
+#iterate through array and create second line array
 second_line = []
-indexes.each do |number, index|
+first_line.each_with_index do |number, index|
   if index % 2 == 0
     #multiply by number by 2 and send to second_line array
     second_line.push(number.to_i * 2)
@@ -23,6 +20,7 @@ indexes.each do |number, index|
     second_line.push(number.to_i)
   end
 end
+
 #make third line array
 third_line = second_line.map do |num|
   if num.to_s.length >= 2
@@ -34,7 +32,6 @@ end
 #add all third line values together
 sum = 0
 final_sum = third_line.each {|digit| sum += digit}
-puts sum
 #if all third line values % 10 == 0 then puts "The number is valid!"
 if sum % 10 == 0
   puts "The number is valid!"
