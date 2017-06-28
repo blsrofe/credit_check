@@ -1,7 +1,7 @@
 
 #create method to add digits together for third line
 def sum_digits(num)
-  num.to_s.split("").inject(0) do|sum, n| {sum + n.to_i}
+  num.to_s.split("").inject(0) {|sum, n| sum + n.to_i}
 end
 
 #get credit card number
