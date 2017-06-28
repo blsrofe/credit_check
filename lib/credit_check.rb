@@ -5,13 +5,18 @@ def sum_digits(num)
   end
 end
 
+def print_valid_invalid_statement(sum)
+  if sum % 10 == 0
+    puts "The number is valid!"
+  else
+    puts "The number is not valid!"
+  end
+end
+
 puts "What is the card number?"
 card_number = gets.chomp
 
 first_line = card_number.split(//)
-
-#def create_second_line
-#end
 
 second_line = []
 first_line.each_with_index do |number, index|
@@ -31,12 +36,8 @@ third_line = second_line.map do |num|
 end
 
 sum = 0
-final_sum = third_line.each do |digit|
+third_line.each do |digit|
   sum += digit
 end
 
-if sum % 10 == 0
-  puts "The number is valid!"
-else
-  puts "The number is not valid!"
-end
+print_valid_invalid_statement(sum)
