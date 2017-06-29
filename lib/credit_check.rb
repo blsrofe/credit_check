@@ -1,4 +1,24 @@
 require "pry"
+
+def gets_card_number
+  puts "What is the card number?"
+  card_number = gets.chomp
+  splits_card_number(card_number)
+end
+
+def splits_card_number(card_number)
+  card_number_split = card_number.split(//)
+  evaluate_if_odd_or_even(card_number_split)
+end
+
+def evaluate_if_odd_or_even(card_number_split)
+  if card_number_split.count % 2 == 0
+    double_second_number_even(card_number_split)
+  else
+    double_second_number_odd(card_number_split)
+  end
+end
+
 def double_second_number_even(card_number_split)
   doubled_collection = []
   card_number_split.each_with_index do |number, index|
@@ -59,13 +79,4 @@ def print_valid_invalid_statement(sum)
   end
 end
 
-puts "What is the card number?"
-card_number = gets.chomp
-
-card_number_split = card_number.split(//)
-
-if card_number_split.count % 2 == 0
-  double_second_number_even(card_number_split)
-else
-  double_second_number_odd(card_number_split)
-end
+gets_card_number
